@@ -1,0 +1,27 @@
+body{
+    background-color: white;
+    margin: 0;
+    flex-grow: 1;
+}
+
+header{
+    background-color: #65B9E9;
+}
+
+footer{
+    margin-top: 200px;
+    background-color: #65B9E9;
+    position:relative;
+    left:0px;
+    bottom:0px;
+    width: 100%;
+}
+
+.footer-bot{
+    background-color: #0099DF;
+}
+
+.contenedor{
+    padding: 1%;
+    text-align: center;
+}
