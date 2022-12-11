@@ -27,8 +27,9 @@ footer{
 
 .marco{
     border-radius:20px;
-    border: 2px solid black;
+    border: 2px solid #0099DF;
     padding: 10px;
+    background-color: white;
 }
 
 /* Personalizados */
@@ -74,4 +75,14 @@ footer{
     position: fixed;
     right: 20px;
     top: 100px;
+  }
+
+  .centro{
+    text-align: center !important;
+  }
+
+  .centrado{
+    display: flex;
+    align-items: center;
+    text-align: justify;
   }

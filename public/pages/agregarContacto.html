@@ -12,6 +12,7 @@
     <link rel="shortcut icon" type="image/ico" href="../img/favicon.ico"/>
 
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/base.css">
 
     <link rel="manifest" href="../manifest.json">
 
@@ -21,7 +22,6 @@
     <!-- IOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-
     <link rel="apple-touch-icon" href="../img/icons/logo192.png">
     
     <link rel="apple-touch-icon" sizes="180x180" href="../img/icons/logo192.png">
@@ -29,6 +29,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <meta name="apple-mobile-web-app-title" content="Libbin">
+
+    <script src="../js/push.min.js"></script>
 </head>
 <header>
     <!--INICIO NAV-VAR-->
@@ -69,7 +71,8 @@
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-8">
-                    <h1>Agregar contacto</h1>
+                    <h1 class="centro">Agregar contacto</h1>
+                    <br>
                     <form class="marco">
                         <div class="form-group">
                           <label for="nombre">Nombre</label>
@@ -79,12 +82,14 @@
                           <label for="telefono">Teléfono</label>
                           <input type="number" class="form-control" id="telefono" placeholder="Ingrese el número." minlength="3" maxlength="10">
                         </div>
+                        <div id="post-btn" class="centro">
+                          <button class="btn btn-info center"><i class="fa fa-save"></i> Guardar </button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
     <!---SCRIPTS-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -93,89 +98,78 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../js/camara-class.js"></script>
+    <script src="../js/pouchdb-7.3.1.min.js"></script>
     <script src="../js/app.js"></script>
 </body>
 <!-- Footer -->
 <footer class="page-footer font-small blue pt-4">
 
-    <!-- Footer Links -->
-    <div class="container-fluid text-center text-md-left">
-  
-      <!-- Grid row -->
-      <div class="row">
-  
-        <!-- Grid column -->
-        <div class="col-md-6 mt-md-0 mt-3" align="center">
-  
-          <!-- Content -->
-          <h5 class="text-uppercase">Libbin</h5>
-          <img src="../img/icons/Logo_libbin.png" width="200px" alt="">
-  
-        </div>
-        <!-- Grid column -->
-  
-        <hr class="clearfix w-100 d-md-none pb-3">
-  
-        <!-- Grid column -->
-        <div class="col-md-3 mb-md-0 mb-3">
-  
-          <!-- Links -->
-          <h5 class="text-uppercase">Contactános</h5>
-  
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
-          </ul>
-  
-        </div>
-        <!-- Grid column -->
-  
-        <!-- Grid column -->
-        <div class="col-md-3 mb-md-0 mb-3">
-  
-          <!-- Links -->
-          <h5 class="text-uppercase">Términos y condiciones</h5>
-  
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!">Link 1</a>
-            </li>
-            <li>
-              <a href="#!">Link 2</a>
-            </li>
-            <li>
-              <a href="#!">Link 3</a>
-            </li>
-            <li>
-              <a href="#!">Link 4</a>
-            </li>
-          </ul>
-  
-        </div>
-        <!-- Grid column -->
-  
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3" align="center">
+
+        <!-- Content -->
+        <h5 class="text-uppercase">Libbin</h5>
+        <img src="../img/icons/Logo_libbin.png" width="200px" alt="">
+
       </div>
-      <!-- Grid row -->
-  
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Contactános</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <i class="fa fa-phone"></i> 4681155822
+          </li>
+          <li>
+            <i class="fa fa-phone"></i> 4681126939
+          </li>
+          <li>
+            <i class="fa fa-envelope"></i> noemivega1305@gmail.com
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Términos y condiciones</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Política de privacidad</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
     </div>
-    <!-- Footer Links -->
-  
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3 footer-bot">© 2022 Copyright:
-      <a href="/"> Libbin</a>
-    </div>
-    <!-- Copyright -->
-  
-  </footer>
-  <!-- Footer -->
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3 footer-bot">© 2022 Copyright:
+    <a href="/"> Libbin</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 </html>

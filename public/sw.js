@@ -5,8 +5,6 @@ const CACHE_STATIC_NAME = "pwa-static-v1";
 const CACHE_DYNAMIC_NAME = "pwa-dynamic-v1";
 const CACHE_INMUTABLE_NAME = "pwa-inmutable-v1";
 
-console.log("Holiwiiiiii");
-
 const APP_SHELL = [
     "/",
     "index.html",
@@ -22,8 +20,12 @@ const APP_SHELL = [
     "img/icons/logo72.png",
     "img/icons/logo96.png",
     "img/icons/Logo_libbin.png",
+    "img/icons/contacto.png",
     "img/bg.png",
     "img/favicon.ico",
+    "img/amigos.png",
+    "img/fotos.png",
+    "img/orden.png",
     "css/style.css",
     "css/base.css",
     "js/app.js",
@@ -32,7 +34,8 @@ const APP_SHELL = [
     "js/base.js",
     "js/pouchdb-7.3.1.min.js",
     "js/pouchdb-nightly.js",
-    "js/sw-db.js"
+    "js/sw-db.js",
+    "js/push.min.js"
 ];
 
 const APP_SHELL_INMUTABLE = [
@@ -40,7 +43,10 @@ const APP_SHELL_INMUTABLE = [
     "https://code.jquery.com/jquery-3.2.1.slim.min.js",
     "https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js",
     "https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js",
-    "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js",
+    "https://use.fontawesome.com/releases/v5.3.1/css/all.css",
+    "https://dam.ngenespanol.com/wp-content/uploads/2022/05/4-pasos-para-hacer-realidad-ese-viaje-que-no-has-podido-emprender.jpg",
+    "https://www.entornoturistico.com/wp-content/uploads/2020/01/viajes.jpg"
 ];
 
 
@@ -88,8 +94,8 @@ self.addEventListener("fetch", (evento) => {
                 });
             }
         });
-    }
 
+    }
     evento.respondWith(respuesta);
 });
 
@@ -97,12 +103,12 @@ self.addEventListener("sync", evento =>{
     console.log("SW: Sync");
 
     if(evento.tag === "nuevo-contacto"){
-        const respuesta = enviarMensajes();
+        const respuesta = enviarContactos();
         evento.waitUntil(respuesta);
     }
 
     if(evento.tag === "nueva-foto"){
         const respuesta = enviarFotos();
-        evento.waitUntil(respuesta)
+        evento.waitUntil(respuesta);
     }
 });

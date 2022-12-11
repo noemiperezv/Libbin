@@ -2,21 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const contactos = [
-    {
-        _id : "1",
-        nombre : "Diana",
-        telefono : "4156782398"
-    },
-    {
-        _id : "2",
-        nombre : "Vanesa",
-        telefono : "4189034576"
-    },
-    {
-        _id : "3",
-        nombre : "Esteban",
-        telefono : "4446781243"
-    }
+    
 ]
 
 const fotos = [

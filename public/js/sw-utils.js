@@ -30,7 +30,7 @@ function manejarPeticionesApi(nombreCache, req){
                 console.log(resp);
                 const obj = JSON.parse(resp);
                 if(obj.nombre){
-                    return guardarMensaje(obj);
+                    return guardarContacto(obj);
                 }else{
                     return guardarFoto(obj);
                     

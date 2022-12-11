@@ -19,15 +19,19 @@ var telefono = $('#telefono');
 var timeline = $('#timeline');
 var timelinefoto = $('#fotos');
 
-function crearMensajeHTML(nombre, telefono, foto) {
+function crearContacto(nombre, telefono, foto) {
 
     var content =`
     <div  class="col-md-4">
-        <div class="card tarjeta" style="width: 18rem;">`;
+        <div class="card tarjeta" style="width:200px;">`;
     
     if ( foto ) {
         content += `
                 <img class="card-img-top" src="${ foto }">
+        `;
+    }else{
+        content += `
+                <img class="card-img-top" src="../img/icons/contacto.png">
         `;
     }
         
@@ -35,7 +39,6 @@ function crearMensajeHTML(nombre, telefono, foto) {
             <div class="card-body">
                 <h5 class="card-title">${ nombre }</h5>
                 <p class="card-text">${ telefono }</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
     </div>
@@ -45,7 +48,7 @@ function crearMensajeHTML(nombre, telefono, foto) {
     // si existe la latitud y longitud, 
     // llamamos la funcion para crear el mapa
     if ( lat ) {
-        crearMensajeMapa( lat, lng, personaje );
+        crearMapa( lat, lng, personaje );
     }
     
     // Borramos la latitud y longitud 
@@ -60,7 +63,6 @@ function crearMensajeHTML(nombre, telefono, foto) {
 }
 
 function crearFoto(foto) {
-
     var contentFoto =`
     `;
     
@@ -82,7 +84,7 @@ function crearFoto(foto) {
     timelinefoto.prepend(contentFoto);
 }
 
-// Boton de enviar mensaje
+// Boton de enviar
 postBtn.on('click', function() {
 
     var nombreContacto = nombre.val();
@@ -111,22 +113,33 @@ postBtn.on('click', function() {
     }).then( resp => resp.json)
     .then(resp => console.log("funciona:", resp))
     .catch( error => console.log("Falla: " + error));
-    crearMensajeHTML( nombreContacto, telefonoContacto, foto );
+    crearContacto( nombreContacto, telefonoContacto, foto );
     $("#nombre").val('');
-    $("#telefono").val('');
-
+    $("#telefono").val('')
+    .then(Push.create("Contacto agregado!", {
+        body: "El contacto se ha guardado existosamente, para verlo ve a la sección de contactos.",
+        icon: '../img/icons/Logo_libbin.png',
+        onClick: function () {
+            window.focus();
+            this.close();
+        }
+    }));
 });
 
 
-function listarMensajes(){
+function listarContactos(){
     fetch("/api/contactos")
     .then(resp => resp.json())
     .then(datos => {
-        console.log(datos);
-        datos.forEach(mensaje => {
-            console.log(mensaje);
-            crearMensajeHTML( mensaje.nombre, mensaje.telefono, mensaje.foto );
-        })
+        if(datos.length > 0){
+            datos.forEach(contacto => {
+                console.log(contacto);
+                crearContacto( contacto.nombre, contacto.telefono, contacto.foto );
+            })
+        }else{
+            timeline.prepend("<br> <h1>Aún no tienes contactos. Registra algunos. </h1>");
+        }
+        
     })
 }
 
@@ -134,16 +147,21 @@ function listarFotos(){
     fetch("/api")
     .then(resp => resp.json())
     .then(datos => {
-        console.log(datos);
-        datos.forEach(f => {
-            console.log(f);
-            crearFoto( f.foto);
-        })
+        if(datos.length > 0){
+            console.log(datos);
+            datos.forEach(f => {
+                console.log(f);
+                crearFoto( f.foto);
+            })
+        }else{
+            timelinefoto.prepend("<br> <h1>Aún no tienes fotos. Toma algunas. </h1>")
+        }
+        
     })
 }
 
 
-listarMensajes();
+listarContactos();
 listarFotos();
 
 function verificarConexion(){
@@ -197,7 +215,16 @@ btnTomar.on("click", () => {
     .then(resp => console.log("funciona:", resp))
     .catch( error => console.log("Falla: " + error));
     crearFoto( foto );
-    contenedorCamara.addClass("oculto");
+    contenedorCamara.addClass("oculto")
+    .then(Push.create("Foto tomada!", {
+        body: "La foto se ha guardado existosamente.",
+        icon: '../img/favicon.ico',
+        timeout: 4000,
+        onClick: function () {
+            window.focus();
+            this.close();
+        }
+    }));
 });
 
 
@@ -431,10 +458,4 @@ btnTomar.on("click", () => {
     xhr.send(null);
     xhr.onreadystatechange = simpleXhrSentinel(xhr);
   }
-
-  var signinLink = document.getElementById('signin');
-  var signoutLink = document.getElementById('signout');
-  signinLink.onclick = function() { navigator.id.request(); };
-  signoutLink.onclick = function() { navigator.id.logout(); };
-
 })();

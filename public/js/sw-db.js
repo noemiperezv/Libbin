@@ -1,10 +1,10 @@
 let db = new PouchDB("bdcontactos");
 let dbFotos = new PouchDB("bdfotos");
 
-function guardarMensaje(mensaje){
-    mensaje._id = new Date().toISOString();
+function guardarContacto(contacto){
+    contacto._id = new Date().toISOString();
 
-    return db.put( mensaje)
+    return db.put( contacto)
     .then(resp => {
         console.log("Se guardo en indexdb");
 
@@ -19,9 +19,9 @@ function guardarMensaje(mensaje){
     })
 }
 
-function enviarMensajes(){
+function enviarContactos(){
 
-    let mensajes = []
+    let contactos = []
     return db.allDocs({include_docs : true}).then(docs => {
         docs.rows.forEach(row => {
             const doc = row.doc;
@@ -35,16 +35,16 @@ function enviarMensajes(){
             .then(resp => {
                 return db.remove(doc);
             });
-            mensajes.push(prom);
+            contactos.push(prom);
         });
-        return Promise.all(mensajes);
+        return Promise.all(contactos);
     })
 }
 
-function guardarFoto(mensaje){
-    mensaje._id = new Date().toISOString();
+function guardarFoto(contacto){
+    contacto._id = new Date().toISOString();
 
-    return dbFotos.put( mensaje)
+    return dbFotos.put( contacto)
     .then(resp => {
         console.log("Se guardo la foto indexdb");
 
