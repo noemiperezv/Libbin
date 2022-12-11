@@ -1,17 +1,19 @@
 importScripts("js/pouchdb-7.3.1.min.js");
+importScripts("js/sw-db.js");
 importScripts("js/sw-utils.js");
 const CACHE_STATIC_NAME = "pwa-static-v1";
 const CACHE_DYNAMIC_NAME = "pwa-dynamic-v1";
 const CACHE_INMUTABLE_NAME = "pwa-inmutable-v1";
 
-console.log("Holiwiiiiiii");
+console.log("Holiwiiiiii");
 
 const APP_SHELL = [
     "/",
     "index.html",
     "pages/contactos.html",
-    "pages/horario.html",
     "pages/pendientes.html",
+    "pages/agregarContacto.html",
+    "pages/fotos.html",
     "img/icons/logo1024.png",
     "img/icons/logo144.png",
     "img/icons/logo192.png",
@@ -20,10 +22,17 @@ const APP_SHELL = [
     "img/icons/logo72.png",
     "img/icons/logo96.png",
     "img/icons/Logo_libbin.png",
-    "css/style.css",
+    "img/bg.png",
     "img/favicon.ico",
+    "css/style.css",
+    "css/base.css",
     "js/app.js",
-    "js/sw-utils.js"
+    "js/sw-utils.js",
+    "js/camara-class.js",
+    "js/base.js",
+    "js/pouchdb-7.3.1.min.js",
+    "js/pouchdb-nightly.js",
+    "js/sw-db.js"
 ];
 
 const APP_SHELL_INMUTABLE = [
@@ -82,4 +91,18 @@ self.addEventListener("fetch", (evento) => {
     }
 
     evento.respondWith(respuesta);
+});
+
+self.addEventListener("sync", evento =>{
+    console.log("SW: Sync");
+
+    if(evento.tag === "nuevo-contacto"){
+        const respuesta = enviarMensajes();
+        evento.waitUntil(respuesta);
+    }
+
+    if(evento.tag === "nueva-foto"){
+        const respuesta = enviarFotos();
+        evento.waitUntil(respuesta)
+    }
 });

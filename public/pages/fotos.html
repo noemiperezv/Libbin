@@ -12,7 +12,6 @@
     <link rel="shortcut icon" type="image/ico" href="../img/favicon.ico"/>
 
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/base.css">
 
     <link rel="manifest" href="../manifest.json">
 
@@ -34,61 +33,63 @@
 <header>
     <!--INICIO NAV-VAR-->
     <nav class="navbar navbar-expand-lg navbar-light bg-with">
-        <a class="navbar-brand" href="#">
-            <img src="../img/icons/Logo_libbin.png" width="76px" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Contactos
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="agregarContacto.html">Nuevo contacto</a>
-                  <a class="dropdown-item" href="contactos.html">Mis contactos</a>
-                </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pendientes.html">Pendientes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="fotos.html">Fotos</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    <!--FIN NAV-VAR-->
+      <a class="navbar-brand" href="#">
+          <img src="../img/icons/Logo_libbin.png" width="76px" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Contactos
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="agregarContacto.html">Nuevo contacto</a>
+                <a class="dropdown-item" href="contactos.html">Mis contactos</a>
+              </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pendientes.html">Pendientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="fotos.html">Fotos</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  <!--FIN NAV-VAR-->
 </header>
 <body>
-    <div class="contenedor">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-10">
-                    <section id="todoapp">
-                        <header id="header">
-                            <h1>Mis pendientes</h1>
-                            <input id="new-todo" placeholder="¿Qué cosas tienes por hacer?" autofocus>
-                        </header>
-                        <section id="main">
-                            <ul id="todo-list"></ul>
-                        </section>
-                    </section>
+    <!-- Fotos -->
+    <div class="contenedor center">
+      <div class="container">
+          <div class="row d-flex justify-content-center">
+              <div class="col-md-8">
+                <div id="photo-btn" class="fab-photo">
+                    <i class="fa fa-camera"></i>
+                </div>
+                <div class="camara-contenedor fadeIn fast oculto" align="center">
+                  <video id="player" autoplay style="height: 300px;"></video>
+                  <div>
+                    <button id="tomar-foto-btn" class="btn btn-info">
+                      <i class="fa fa-camera"></i>
+                      Tomar Foto
+                    </button>
+                  </div>
                 </div>
             </div>
+          </div>
         </div>
     </div>
-    
-      <img src="../img/plain_sign_in_blue.png" id="signin" />
-      <img src="../img/plain_sign_in_blue.png" id="signout" style="display:none" />
-      <!--script src="https://login.persona.org/include.js"></-script-->
-      <script src="../js/pouchdb-7.3.1.min.js"></script>
-      <script src="../js/base.js"></script>
+    <div class="container">
+        <div id="fotos" class="row">
+        </div>
+    </div>
 
     <!---SCRIPTS-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -1,42 +1,71 @@
 const express = require('express');
 const router = express.Router();
 
-const mensajes = [
+const contactos = [
     {
         _id : "1",
-        user : "goku",
-        mensaje : "mensaje número uno."
+        nombre : "Diana",
+        telefono : "4156782398"
     },
     {
         _id : "2",
-        user : "gohan",
-        mensaje : "mensaje número dos."
+        nombre : "Vanesa",
+        telefono : "4189034576"
     },
     {
         _id : "3",
-        user : "goku",
-        mensaje : "mensaje número tres."
+        nombre : "Esteban",
+        telefono : "4446781243"
+    }
+]
+
+const fotos = [
+    {
+        _id: "1",
+        foto: "https://dam.ngenespanol.com/wp-content/uploads/2022/05/4-pasos-para-hacer-realidad-ese-viaje-que-no-has-podido-emprender.jpg"
+    },
+    {
+        _id: "2",
+        foto: "https://www.entornoturistico.com/wp-content/uploads/2020/01/viajes.jpg"
     }
 ]
 
 router.get( "/", (req, resp) => {
-    resp.json(mensajes);
+    resp.json(fotos);
 });
 
+router.get( "/contactos", (req, resp) => {
+    resp.json(contactos);
+});
+
+
 router.post( "/", (req, resp) => {
-    const mensaje = {
-        mensaje : req.body.mensaje,
-        user : req.body.user,
-        lat: req.body.lat,
-        lng: req.body.lng,
-        foto: req.body.foto
+    
+        const foto = {
+            foto : req.body.foto
+        }
+    
+        fotos.push(foto);
+        console.log("Mis fotos", fotos);
+        resp.json({
+            ok : true,
+            foto
+        });
+});
+
+router.post( "/contactos", (req, resp) => {
+    
+    const contacto = {
+        nombre : req.body.nombre,
+        telefono : req.body.telefono,
+        foto : req.body.foto
     }
 
-    mensajes.push(mensaje);
-    console.log("Mis mensajes", mensajes);
+    contactos.push(contacto);
+    console.log("Mis contactos", contactos);
     resp.json({
         ok : true,
-        mensaje
+        contacto
     });
 });
 

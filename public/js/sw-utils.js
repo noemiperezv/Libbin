@@ -29,7 +29,13 @@ function manejarPeticionesApi(nombreCache, req){
             return req.clone().text().then(resp => {
                 console.log(resp);
                 const obj = JSON.parse(resp);
-                return guardarMensaje(obj);
+                if(obj.nombre){
+                    return guardarMensaje(obj);
+                }else{
+                    return guardarFoto(obj);
+                    
+                }
+                
             });
         }
         else{

@@ -7,8 +7,8 @@ const app = express();
 const rutaPublica = path.resolve(__dirname, "../public");
 const port = process.env.PORT || 8000;
 
-app.use( bodyParser.json());
-app.use( bodyParser.urlencoded({ extended : true }));
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb', extended : true}));
 
 app.use( express.static(rutaPublica));
 

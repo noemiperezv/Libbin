@@ -14,7 +14,7 @@ footer{
     position:relative;
     left:0px;
     bottom:0px;
-    width: 100%;
+    width: 100% !important;
 }
 
 .footer-bot{
@@ -22,6 +22,56 @@ footer{
 }
 
 .contenedor{
-    padding: 1%;
-    text-align: center;
+    padding: 5%;
 }
+
+.marco{
+    border-radius:20px;
+    border: 2px solid black;
+    padding: 10px;
+}
+
+/* Personalizados */
+.oculto {
+    display: none !important;
+}
+
+.fab {
+    width: 70px;
+    height: 70px;
+    background-color: #C73E08;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px 0 #666;
+    transition: all 0.1s ease-in-out;
+  
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    line-height: 70px;
+  
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+  }
+
+  .tarjeta{
+    margin: 10px;
+  }
+
+  .fab-photo {
+    width: 50px;
+    height: 50px;
+    background-color: #f53948;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px 0 #666;
+    transition: all 0.1s ease-in-out;
+  
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    line-height: 55px;
+  
+    position: fixed;
+    right: 20px;
+    top: 100px;
+  }
