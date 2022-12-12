@@ -86,3 +86,9 @@ footer{
     align-items: center;
     text-align: justify;
   }
+
+  .imagen{
+    object-fit: cover;
+    height: 300px;
+    width: 100%;
+  }

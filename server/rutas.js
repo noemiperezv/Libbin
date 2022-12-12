@@ -6,14 +6,6 @@ const contactos = [
 ]
 
 const fotos = [
-    {
-        _id: "1",
-        foto: "https://dam.ngenespanol.com/wp-content/uploads/2022/05/4-pasos-para-hacer-realidad-ese-viaje-que-no-has-podido-emprender.jpg"
-    },
-    {
-        _id: "2",
-        foto: "https://www.entornoturistico.com/wp-content/uploads/2020/01/viajes.jpg"
-    }
 ]
 
 router.get( "/", (req, resp) => {

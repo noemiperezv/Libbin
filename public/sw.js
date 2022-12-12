@@ -11,6 +11,7 @@ const APP_SHELL = [
     "pages/contactos.html",
     "pages/pendientes.html",
     "pages/agregarContacto.html",
+    "pages/politicas.html",
     "pages/fotos.html",
     "img/icons/logo1024.png",
     "img/icons/logo144.png",
@@ -44,9 +45,7 @@ const APP_SHELL_INMUTABLE = [
     "https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js",
     "https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js",
     "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js",
-    "https://use.fontawesome.com/releases/v5.3.1/css/all.css",
-    "https://dam.ngenespanol.com/wp-content/uploads/2022/05/4-pasos-para-hacer-realidad-ese-viaje-que-no-has-podido-emprender.jpg",
-    "https://www.entornoturistico.com/wp-content/uploads/2020/01/viajes.jpg"
+    "https://use.fontawesome.com/releases/v5.3.1/css/all.css"
 ];
 
 
